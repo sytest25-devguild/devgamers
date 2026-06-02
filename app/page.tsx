@@ -10,6 +10,9 @@ export default function Home() {
         <p className="mt-3 text-2xl text-center sm:text-left">
           This is the landing page of the game. 
         </p>
+        <button className="mt-5 px-5 py-3 rounded-lg bg-blue-500 text-white text-lg hover:bg-blue-600">
+          testbutton
+          </button>
       </main>
     </div>
   );
