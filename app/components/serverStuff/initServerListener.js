@@ -1,6 +1,7 @@
 import { getIO } from "./ioServer.js";
 
 export function serverTest() {
+  console.log("in serverTest");
   const io = getIO();
 
   io.on("connection", (socket) => {
