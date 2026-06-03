@@ -1,12 +1,11 @@
-"use client";
 
 import { useEffect, useState } from "react";
 import { getSocket } from "./socketStuff/connectSocket.js";
 
-export default function Home() {
+export default function setupListeners() {
 
   useEffect(() => {
-    console.log("useEffect in Home ran");
+    console.log("useEffect in setupListeners ran");
     const socket = getSocket();
 
     socket.on("message", () => {
