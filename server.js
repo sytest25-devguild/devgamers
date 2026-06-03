@@ -16,7 +16,13 @@ app.prepare().then(() => {
   console.log("in app preparing");
   const httpServer = createServer(handler);
 
-  const io = new Server(httpServer);
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],      
+    },
+  });
+
   setIO(io);
   serverTest();
 
