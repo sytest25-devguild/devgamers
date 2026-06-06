@@ -24,3 +24,67 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.phaser-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-form {
+  display: flex;
+  width: 320px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form label {
+  color: #cbd5e1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.login-form input {
+  border: 1px solid #475569;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 17px;
+  padding: 12px 14px;
+}
+
+.login-form input::placeholder {
+  color: #64748b;
+}
+
+.login-form button {
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 14px;
+}
+
+.login-form button:hover {
+  background: #1d4ed8;
+}
+
+.login-form .secondary {
+  border-color: #475569;
+  background: #1e293b;
+  color: #bfdbfe;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.login-form .secondary:hover {
+  background: #334155;
+}
