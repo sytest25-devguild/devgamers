@@ -13,7 +13,17 @@ const EmojiThrower = (): JSX.Element => {
     return () => ws.close();
   }, []);
 
-  return <span>{emoji || "❌"}</span>;
+  return (
+    <div
+      className={
+        "flex flex-col items-center justify-center " +
+        "fixed h-10 w-[200px] px-5 text-[120%] " +
+        "bg-[#d4dce0] text-[#5d6263] rounded font-semibold"
+      }
+    >
+      <p className="w-full text-center">Welcome! {emoji || "❌"}</p>
+    </div>
+  );
 };
 
 export default EmojiThrower;
