@@ -10,9 +10,8 @@ export default class LandingScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("logo", "/logo.svg");
+    this.load.image("logo", "/logo.png")
   }
-
   create() {
     const centerX = this.scale.width / 2;
     const centerY = this.scale.height / 2;
@@ -35,14 +34,14 @@ export default class LandingScene extends Phaser.Scene {
       this.logo?.setScale(this.logoBaseScale);
     });
 
-    this.titleText = this.add.text(centerX, centerY + 150, "DevGuild", {
-      fontSize: "40px",
-      color: "#ffffff",
-      fontFamily: "Arial",
-    });
+    // this.titleText = this.add.text(centerX, centerY + 150, "DevGuild", {
+    //   fontSize: "40px",
+    //   color: "#ffffff",
+    //   fontFamily: "Arial",
+    // });
 
-    this.titleText.setOrigin(0.5);
-    this.updateLayout(this.scale.width, this.scale.height);
+    // this.titleText.setOrigin(0.5);
+    // this.updateLayout(this.scale.width, this.scale.height);
 
     this.scale.on("resize", this.handleResize, this);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
