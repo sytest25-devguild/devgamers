@@ -1,12 +1,13 @@
 "use client";
 
 import { JSX, useEffect, useState } from "react";
+import URLS from "../../utils/constants/urls";
 
 const EmojiThrower = (): JSX.Element => {
   const [emoji, setEmoji] = useState<string>("");
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket(URLS.EMOJI_THROWER_API);
     ws.onmessage = (event: MessageEvent) => {
       setEmoji(event.data);
     };
