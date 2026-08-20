@@ -11,11 +11,13 @@ export default class LoginScene extends Phaser.Scene {
   constructor() {
     super("LoginScene");
   }
-
+  preload(){
+    this.load.image("logo", "/logo.png")
+  }
   create() {
     const centerX = this.scale.width / 2;
     const centerY = this.scale.height / 2;
-
+    this.add.image(centerX, centerY, "logo")
     this.brandText = this.add.text(centerX, 80, "DevGuild", {
       fontSize: "44px",
       color: "#ffffff",
