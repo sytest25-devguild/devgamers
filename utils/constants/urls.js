@@ -1,5 +1,7 @@
 const URLS = {
-  EMOJI_THROWER_API: "https://devgamers-websocket.onrender.com",
+  EXTERNAL_APIS: {
+    EMOJI_THROWER: "https://devgamers-websocket.onrender.com",
+  },
 };
 
 export default URLS;
