@@ -7,7 +7,7 @@ const EmojiThrower = (): JSX.Element => {
   const [emoji, setEmoji] = useState<string>("");
 
   useEffect(() => {
-    const ws = new WebSocket(URLS.EMOJI_THROWER_API);
+    const ws = new WebSocket(URLS.EXTERNAL_APIS.EMOJI_THROWER);
     ws.onmessage = (event: MessageEvent) => {
       setEmoji(event.data);
     };
