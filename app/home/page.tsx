@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useState } from "react";
+import EmojiThrower from "../../components/generate-text/EmojiThrower";
 
 export default function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -82,6 +83,7 @@ export default function HomePage() {
           </div>
         </div>
       </nav>
+      <EmojiThrower />
 
       <section className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center">
         <Image
