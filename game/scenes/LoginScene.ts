@@ -34,7 +34,7 @@ export default class LoginScene extends Phaser.Scene {
     panelBg.setStrokeStyle(2, 0x334155, 1);
 
     const title = this.add
-      .text(0, -130, "Login", {
+      .text(0, -145, "Login", {
         fontSize: "34px",
         color: "#f8fafc",
         fontFamily: "Arial",
