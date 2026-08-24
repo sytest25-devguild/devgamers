@@ -80,11 +80,16 @@ export default class LoginScene extends Phaser.Scene {
       ) as HTMLInputElement | null;
       const username = usernameInput?.value?.trim() ?? "";
 
-      this.statusText?.setText(
-        username.length > 0
-          ? `Signed in as ${username}`
-          : "Please enter username and password",
-      );
+      if (username.length > 0) {
+        this.statusText?.setText(`Signed in as ${username}`);
+        window.dispatchEvent(
+          new CustomEvent("phaser:navigate", {
+            detail: { path: "/home" },
+          }),
+        );
+      } else {
+        this.statusText?.setText("Please enter username and password");
+      }
     };
 
     this.backClickHandler = (event: MouseEvent) => {
