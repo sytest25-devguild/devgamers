@@ -19,7 +19,8 @@ const EmojiThrower = (): JSX.Element => {
       className={
         "flex flex-col items-center justify-center " +
         "fixed h-10 w-[200px] px-5 text-[120%] " +
-        "bg-[#d4dce0] text-[#5d6263] rounded font-semibold"
+        "bg-neutral-800 text-neutral-400 font-semibold " +
+        "border-b-2 border-r-2 border-solid border-neutral-700 rounded"
       }
     >
       <p className="w-full text-center">Welcome! {emoji || "❌"}</p>
