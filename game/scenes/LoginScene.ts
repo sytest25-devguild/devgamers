@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-
+import { signInWithEmailAndPassword } from "@/app/login/_actions";
 export default class LoginScene extends Phaser.Scene {
   private brandText?: Phaser.GameObjects.Text;
   private panel?: Phaser.GameObjects.Container;
@@ -8,7 +8,7 @@ export default class LoginScene extends Phaser.Scene {
   private formSubmitHandler?: (event: SubmitEvent) => void;
   private backClickHandler?: (event: MouseEvent) => void;
   private registerClickHandler?: (event: MouseEvent) => void;
-
+  private isSubmitting = false;
   constructor() {
     super("LoginScene");
   }
@@ -72,25 +72,49 @@ export default class LoginScene extends Phaser.Scene {
       "#back-home",
     ) as HTMLButtonElement | null;
 
-    this.formSubmitHandler = (event: SubmitEvent) => {
-      event.preventDefault();
+    this.formSubmitHandler = async (event: SubmitEvent) => {
+  event.preventDefault();
 
-      const usernameInput = formNode?.querySelector(
-        "#username",
-      ) as HTMLInputElement | null;
-      const username = usernameInput?.value?.trim() ?? "";
+  if (this.isSubmitting) return;
+  this.isSubmitting = true;
 
-      if (username.length > 0) {
-        this.statusText?.setText(`Signed in as ${username}`);
-        window.dispatchEvent(
-          new CustomEvent("phaser:navigate", {
-            detail: { path: "/home" },
-          }),
-        );
-      } else {
-        this.statusText?.setText("Please enter username and password");
-      }
-    };
+  const usernameInput = formNode?.querySelector(
+    "#username",
+  ) as HTMLInputElement | null;
+  const passwordInput = formNode?.querySelector(
+    "#password",
+  ) as HTMLInputElement | null;
+  const email = usernameInput?.value?.trim() ?? "";
+  const password = passwordInput?.value ?? "";
+
+  if (!email || !password) {
+    this.statusText?.setText("Please enter username and password");
+    this.isSubmitting = false;
+    return;
+  }
+
+  this.statusText?.setText("Signing in...");
+
+  try {
+    const result = await signInWithEmailAndPassword(email, password);
+
+    if (!result.success) {
+      this.statusText?.setText("Login failed. Check your credentials.");
+      return;
+    }
+
+    this.statusText?.setText(`Signed in as ${email}`);
+    window.dispatchEvent(
+      new CustomEvent("phaser:navigate", {
+        detail: { path: "/home" },
+      }),
+    );
+  } catch {
+    this.statusText?.setText("Something went wrong. Please try again.");
+  } finally {
+    this.isSubmitting = false;
+  }
+};
 
     this.backClickHandler = (event: MouseEvent) => {
       event.preventDefault();
